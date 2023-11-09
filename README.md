@@ -3,8 +3,8 @@
 Project 2 IS 403
 <br>
 Breanna, Jake, Gabe, Lili
-<br><br>
-<p font-weight:"bold">Set up steps when zipping code and using it on a localhost</p>
+<br><br><br>
+Set up steps when zipping code and using it on a localhost
 <br>
 Step 1:
 <br>
