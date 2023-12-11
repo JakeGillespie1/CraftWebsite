@@ -53,6 +53,10 @@ app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
 
+app.get('/product', (req, res) => {
+    res.render(path.join(__dirname + '/views/product'));
+});
+
 //send message to user that displays the text in the send method
 app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
