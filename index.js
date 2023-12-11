@@ -1,5 +1,5 @@
 const express = require('express');
-const { userInfo } = require('os');
+const ejs = require('ejs');
 
 let app = express();
 
@@ -37,6 +37,10 @@ let knex = require('knex')({
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
     res.render(path.join(__dirname + '/views/index'));
+});
+
+app.get('/inheritance_test', (req, res) => {
+    res.render(path.join(__dirname + '/views/inheritance_test'));
 });
 
 app.get('/about', (req, res) => {
