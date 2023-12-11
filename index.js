@@ -36,7 +36,13 @@ let knex = require('knex')({
 
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
-    res.render(path.join(__dirname + '/views/index'));
+    knex.select()
+        .from('response')
+        .then((data) =>
+            res.render(path.join(__dirname + '/views/index'), {
+                reviewData: data,
+            })
+        );
 });
 
 app.get('/inheritance_test', (req, res) => {
