@@ -10,11 +10,11 @@
                 <div class="right-column-custom">
                     <div class="product-description">
                         <span>Hand-made</span>
-                        <h1>Product Name</h1>
-                        <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+                        <h1><%= productData[0].product_name %></h1>
+                        <p><%= productData[0].product_description %></p>
                     </div>
                     <div class="product-price">
-                        <span>$Insert Price</span>
+                        <span>$<%= productData[0].price %></span>
                         <br><br>
                         <a href="leaveReview">
                             <button class="button" type="button">Leave a Review</button>

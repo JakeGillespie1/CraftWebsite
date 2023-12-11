@@ -53,7 +53,18 @@ app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
 
-app.get('/product', (req, res) => {
+app.get('/product/:id', (req, res) => {
+    let pID = req.params.id;
+    console.log('PPPPPPPPP', pID);
+    knex.select()
+        .from('product')
+        .where({ product_id: pID })
+        .then((data) =>
+            res.render(path.join(__dirname + '/views/index'), {
+                productData: data,
+            })
+        );
+
     res.render(path.join(__dirname + '/views/product'));
 });
 
