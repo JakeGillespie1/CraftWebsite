@@ -61,7 +61,7 @@ app.get('/product/:id', (req, res) => {
         .where({ product_id: pID })
         .then((data) =>
             res.render(path.join(__dirname + '/views/index'), {
-                reviewData: data,
+                productData: data,
             })
         );
 
