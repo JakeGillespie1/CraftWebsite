@@ -672,6 +672,19 @@ progress {
   width: 65%;
   position: relative;
 }
+
+.left-column-custom img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+ 
+.left-column-custom img.active {
+  opacity: 1;
+}
  
 .right-column-custom {
   width: 35%;
