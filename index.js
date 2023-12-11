@@ -9,9 +9,9 @@ let port = process.env.PORT || 3001;
 
 let rds_port = process.env.RDS_PORT || 5432;
 let host = process.env.RDS_HOSTNAME || 'localhost';
-let user = process.env.RDS_USERNAME || 'ebroot';
-let password = process.env.RDS_PASSWORD || 'wannaspritecranberry';
-let database = process.env.RDS_DB_NAME || 'project3';
+let user = process.env.RDS_USERNAME || 'postgres';
+let password = process.env.RDS_PASSWORD || 'Gabriel20!';
+let database = process.env.RDS_DB_NAME || 'intex';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
 app.use(express.static(path.join(__dirname + '/public')));
@@ -62,7 +62,6 @@ app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
-
 //I'm editing this right now (Brenna)
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
@@ -78,7 +77,7 @@ app.post('/userLogin', (req, res) => {
                 let sFirstName = results[0].first_name;
                 let sLastName = results[0].last_name;
                 let isAdmin = results[0].is_admin;
-                    //need to change location?
+                //need to change location?
                 res.render(path.join(__dirname + '/views/testing'), {
                     first_name: sFirstName,
                     last_name: sLastName,
@@ -88,9 +87,5 @@ app.post('/userLogin', (req, res) => {
             }
         });
 });
-
-
-
-
 
 app.listen(port, () => console.log('I am listening'));
