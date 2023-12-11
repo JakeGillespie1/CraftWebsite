@@ -4,6 +4,7 @@
   "description": "<br>\r Project 3 IS 403\r <br>\r Breanna, Jake, Gabe, Lili\r <br><br><br>\r Set up steps when zipping code and using it on a localhost\r <br>\r Step 1:\r <br>\r npm init -> Creates local package.json file\r <br>\r Step 2:\r <br>\r npm install --save express -> Creates node_modules dir and package-lock file to be stored locally",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
