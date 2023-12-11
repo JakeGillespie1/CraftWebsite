@@ -1,6 +1,6 @@
 <%- include('test.ejs') %>
 
-<% section('content'); %>
+<% section('content', function(){%>
     <!-- Specific page content goes here -->
     <p><%= content %></p>
-<% endSection(); %>
+<% });%>
