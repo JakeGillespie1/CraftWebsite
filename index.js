@@ -53,17 +53,13 @@ app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
 
-app.get('/product', (req, res) => {
-    res.render(path.join(__dirname + '/views/product'));
-});
-
 //send message to user that displays the text in the send method
 app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
 
-//I copied this over from INTEX, need to create table in database and maybe add test page
+//I'm editing this right now (Brenna)
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
     knex('user')
@@ -78,7 +74,7 @@ app.post('/userLogin', (req, res) => {
                 let sFirstName = results[0].first_name;
                 let sLastName = results[0].last_name;
                 let isAdmin = results[0].is_admin;
-                    //need to change location?
+                    //need to change location
                 res.render(path.join(__dirname + '/views/testing'), {
                     first_name: sFirstName,
                     last_name: sLastName,
