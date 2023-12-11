@@ -59,7 +59,7 @@ app.get('/adminlogin', (req, res) => {
 });
 
 
-//I'm editing this right now (Brenna)
+//I copied this over from INTEX, need to create table in database and maybe add test page
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
     knex('user')
