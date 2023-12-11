@@ -9,8 +9,8 @@ let port = process.env.PORT || 3001;
 
 let rds_port = process.env.RDS_PORT || 5432;
 let host = process.env.RDS_HOSTNAME || 'localhost';
-let user = process.env.RDS_USERNAME || 'postgres';
-let password = process.env.RDS_PASSWORD || 'Gabriel20!';
+let user = process.env.RDS_USERNAME || 'ebroot';
+let password = process.env.RDS_PASSWORD || 'wannaspritecranberry';
 let database = process.env.RDS_DB_NAME || 'project3';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
