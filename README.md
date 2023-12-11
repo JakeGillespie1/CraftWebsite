@@ -1,4 +1,5 @@
 # CraftWebsite
+
 <br>
 Project 3 IS 403
 <br>
@@ -13,3 +14,4 @@ npm init -> Creates local package.json file
 Step 2:
 <br>
 npm install --save express -> Creates node_modules dir and package-lock file to be stored locally
+#awseb-e-hmfegef2ei-stack-awsebrdsdatabase-gry14qturxjq.cgnstksl2rrw.us-west-1.rds.amazonaws.com
