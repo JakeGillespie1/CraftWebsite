@@ -45,10 +45,6 @@ app.get('/', (req, res) => {
         );
 });
 
-app.get('/indexInherited', (req, res) => {
-    res.render(path.join(__dirname + '/views/indexInherited'));
-});
-
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
