@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 
 //send message to user that displays the text in the send method
 app.get('/login', (req, res) => {
-    res.send();
+    res.render(path.join(__dirname + '/views/login'));
 });
 
 app.listen(port, () => console.log('I am listening'));
