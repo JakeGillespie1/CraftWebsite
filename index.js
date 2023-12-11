@@ -11,7 +11,7 @@ let rds_port = process.env.RDS_PORT || 5432;
 let host = process.env.RDS_HOSTNAME || 'localhost';
 let user = process.env.RDS_USERNAME || 'postgres';
 let password = process.env.RDS_PASSWORD || 'Gabriel20!';
-let database = process.env.RDS_DB_NAME || 'intex';
+let database = process.env.RDS_DB_NAME || 'project3';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
 app.use(express.static(path.join(__dirname + '/public')));
