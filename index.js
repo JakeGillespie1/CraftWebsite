@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/inheritance_test', (req, res) => {
-    res.render(path.join(__dirname + '/views/inheritance_test'));
+    res.render(path.join(__dirname + '/views/inheritance_test'), {Content : "This is the content of the page."});
 });
 
 app.get('/about', (req, res) => {
