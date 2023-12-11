@@ -37,7 +37,7 @@ let knex = require('knex')({
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
     knex.select()
-        .from('response')
+        .from('review')
         .then((data) =>
             res.render(path.join(__dirname + '/views/index'), {
                 reviewData: data,
