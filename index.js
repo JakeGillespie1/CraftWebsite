@@ -45,8 +45,8 @@ app.get('/', (req, res) => {
         );
 });
 
-app.get('/inheritance_test', (req, res) => {
-    res.render(path.join(__dirname + '/views/inheritance_test'));
+app.get('/indexInherited', (req, res) => {
+    res.render(path.join(__dirname + '/views/indexInherited'));
 });
 
 app.get('/about', (req, res) => {
