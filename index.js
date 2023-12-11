@@ -44,7 +44,7 @@ app.get('/about', (req, res) => {
 });
 
 //send message to user that displays the text in the send method
-app.get('/login', (req, res) => {
+app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
