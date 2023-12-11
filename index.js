@@ -14,7 +14,7 @@ let password = process.env.RDS_PASSWORD || 'Gabriel20!';
 let database = process.env.RDS_DB_NAME || 'project3';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
-app.use(express.static(path.join(__dirname + '/css/styles.css')));
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.set('views', path.join(__dirname, '/views'));
 
@@ -37,6 +37,10 @@ let knex = require('knex')({
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
     res.render(path.join(__dirname + '/views/index'));
+});
+
+app.get('/about', (req, res) => {
+    res.render(path.join(__dirname + '/views/about'));
 });
 
 //send message to user that displays the text in the send method
