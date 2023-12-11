@@ -14,7 +14,7 @@ let password = process.env.RDS_PASSWORD || 'Gabriel20!';
 let database = process.env.RDS_DB_NAME || 'project3';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname + '/css/styles.css')));
 
 app.set('views', path.join(__dirname, '/views'));
 
