@@ -1,0 +1,5 @@
+#your mom
+node_modules/
+*.zip
+#package-lock.json
+#package.json
