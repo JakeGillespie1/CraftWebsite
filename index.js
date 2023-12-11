@@ -1,5 +1,5 @@
 const express = require('express');
-const { userInfo } = require('os');
+const ejs = require('ejs');
 
 let app = express();
 
@@ -9,8 +9,8 @@ let port = process.env.PORT || 3001;
 
 let rds_port = process.env.RDS_PORT || 5432;
 let host = process.env.RDS_HOSTNAME || 'localhost';
-let user = process.env.RDS_USERNAME || 'postgres';
-let password = process.env.RDS_PASSWORD || 'Gabriel20!';
+let user = process.env.RDS_USERNAME || 'ebroot';
+let password = process.env.RDS_PASSWORD || 'wannaspritecranberry';
 let database = process.env.RDS_DB_NAME || 'project3';
 let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
 
@@ -37,6 +37,10 @@ let knex = require('knex')({
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
     res.render(path.join(__dirname + '/views/index'));
+});
+
+app.get('/inheritance_test', (req, res) => {
+    res.render(path.join(__dirname + '/views/inheritance_test'), {Content : "This is the content of the page."});
 });
 
 app.get('/about', (req, res) => {
