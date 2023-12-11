@@ -1,8 +1,38 @@
-//import express
-const EXPRESS = require('express');
+const express = require('express');
+const { userInfo } = require('os');
 
-//call the express constructor to access Express' attributes and methods
-let app = EXPRESS();
+let app = express();
+
+let path = require('path');
+
+let port = process.env.PORT || 3001;
+
+let rds_port = process.env.RDS_PORT || 5432;
+let host = process.env.RDS_HOSTNAME || 'localhost';
+let user = process.env.RDS_USERNAME || 'postgres';
+let password = process.env.RDS_PASSWORD || 'Gabriel20!';
+let database = process.env.RDS_DB_NAME || 'intex';
+let ssl = process.env.DB_SSL ? { rejectUnauthorized: false } : false;
+
+app.use(express.static(path.join(__dirname + '/public')));
+
+app.set('views', path.join(__dirname, '/views'));
+
+app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({ extended: true }));
+
+let knex = require('knex')({
+    client: 'pg',
+    connection: {
+        host: host,
+        user: user,
+        password: password,
+        database: database,
+        port: rds_port,
+        ssl: ssl,
+    },
+});
 
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
@@ -14,11 +44,4 @@ app.get('/login', (req, res) => {
     res.send();
 });
 
-//establish a port that the localhost can listen on and send a message to indicate that the server is listening
-const PORT = 3000;
-
-app.listen(3000, () => {
-    console.log('Server is running');
-});
-
-// HI JAKE
+app.listen(port, () => console.log('I am listening'));
