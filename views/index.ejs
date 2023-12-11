@@ -265,35 +265,7 @@
                 </div>
             </div>
         </section>
-        <table
-            class="table table-striped"
-            style="
-                width: 100%;
-                background-color: RGBA(248, 249, 250, var(--bs-bg-opacity, 1));
-                border: 1px solid black;
-            "
-            id="reviewDataTable"
-        >
-            <thead style="background-color: #24a5de; color: white">
-                <tr>
-                    <th style="text-align: left">ID</th>
-                    <th style="text-align: left">Reviewer Name</th>
-                    <th style="text-align: left">Review Text</th>
-                    <th style="text-align: left">Rating</th>
-                </tr>
-            </thead>
-            <tbody style="font-family: Arial; font-size: 9pt">
-                <% for (let iCount = 0; iCount < reviewData.length; iCount++) {
-                %>
-                <tr>
-                    <td><%= reviewData[iCount].id %></td>
-                    <td><%= reviewData[iCount].reviewer_name%></td>
-                    <td><%= reviewData[iCount].review_text %></td>
-                    <td><%= reviewData[iCount].rating%></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container">
