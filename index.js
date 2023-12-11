@@ -74,7 +74,7 @@ app.post('/userLogin', (req, res) => {
                 let sFirstName = results[0].first_name;
                 let sLastName = results[0].last_name;
                 let isAdmin = results[0].is_admin;
-
+                    //need to change location?
                 res.render(path.join(__dirname + '/views/testing'), {
                     first_name: sFirstName,
                     last_name: sLastName,
