@@ -675,7 +675,7 @@ progress {
 
 .left-column-custom img {
   width: 100%;
-  position: absolute;
+  position: static;
   left: 0;
   top: 0;
   opacity: 0;
