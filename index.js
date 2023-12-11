@@ -36,7 +36,7 @@ let knex = require('knex')({
 
 //send message to user that displays the text in the send method
 app.get('/', (req, res) => {
-    res.send('Welcome to Index Page');
+    res.render(path.join(__dirname + '/views/index'));
 });
 
 //send message to user that displays the text in the send method
