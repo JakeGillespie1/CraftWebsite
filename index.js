@@ -39,6 +39,10 @@ app.get('/', (req, res) => {
     res.render(path.join(__dirname + '/views/index'));
 });
 
+app.get('/about', (req, res) => {
+    res.render(path.join(__dirname + '/views/about'));
+});
+
 //send message to user that displays the text in the send method
 app.get('/login', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
