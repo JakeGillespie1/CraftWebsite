@@ -62,6 +62,10 @@ app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
+app.get('/leaveReview', (req, res) => {
+    res.render(path.join(__dirname + '/views/leaveReview'));
+});
+
 //Copied over from INDEX, need to create user table in database to adjust changes
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
