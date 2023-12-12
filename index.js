@@ -56,16 +56,16 @@ app.get('/about', (req, res) => {
 app.get('/product/:id', (req, res) => {
     let pID = req.params.id;
     console.log('PPPPPPPPP', pID);
-    knex.select()
-        .from('product')
-        .where({ product_id: pID })
-        .then((data) =>
-            res.render(path.join(__dirname + '/views/index'), {
-                productData: data,
-            })
-        );
-
-    res.render(path.join(__dirname + '/views/product'));
+    if (pID) {
+        knex.select()
+            .from('product')
+            .where('product_id', '=', pID)
+            .then((data) =>
+                res.render(path.join(__dirname + '/views/product'), {
+                    productData: data,
+                })
+            );
+    }
 });
 
 //send message to user that displays the text in the send method
