@@ -56,7 +56,6 @@ app.get('/about', (req, res) => {
 
 app.get('/product/:id', (req, res) => {
     let pID = req.params.id;
-    console.log('PPPPPPPPP', pID);
     if (pID) {
         knex.select()
             .from('product')
