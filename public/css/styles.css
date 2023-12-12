@@ -10981,6 +10981,6 @@ left: 0;
 .rating_stars span.r.r5 {left:105px; width: 12px;}
 
 label {width: 300px;display: inline-block; text-align: right; margin-right: 100px;}
-input {width: 250px; text-align: left; margin-left: 0px;}
+input {width: 250px; text-align: left; margin-left: 0px; margin-top: 20px;}
 .values {margin-top: 20px;}
 .info {max-width: 500px; margin: 20px auto;}
