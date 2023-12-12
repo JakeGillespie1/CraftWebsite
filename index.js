@@ -38,6 +38,7 @@ let knex = require('knex')({
 app.get('/', (req, res) => {
     knex.select()
         .from('review')
+        .join('product', 'review.product_id', '=', 'product.product_id')
         .then((data) =>
             res.render(path.join(__dirname + '/views/index'), {
                 reviewData: data,
