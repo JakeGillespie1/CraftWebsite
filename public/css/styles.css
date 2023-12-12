@@ -10919,6 +10919,21 @@ textarea.form-control-lg {
 }
 
 
+.fields {
+  display: inline-block;
+  text-align: left;
+  width: 40%;
+  vertical-align: top;
+}
+.labels {
+  display: inline-block;
+  text-align: right;
+  width: 50%;
+  padding: 5px;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
 
 
 .rating_stars {
@@ -10965,7 +10980,7 @@ left: 0;
 .rating_stars span.r.r4_5 {left:93px; width: 12px;}
 .rating_stars span.r.r5 {left:105px; width: 12px;}
 
-label {width: 100px;display: inline-block; text-align: right; margin-right: 10px;}
-input {width: 50px; text-align: center;}
+label {width: 300px;display: inline-block; text-align: right; margin-right: 100px;}
+input {width: 50px; text-align: left; margin-left: 0px;}
 .values {margin-top: 20px;}
 .info {max-width: 500px; margin: 20px auto;}
