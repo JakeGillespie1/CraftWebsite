@@ -1,28 +1,29 @@
-<%- include('Head') %>
-<%- include('Navigation') %>
-<%- include('Header') %>
-        <!-- Section-->
-        <body class="bg-gradient-primary">
-            <div class="container-custom">
-                <div class="left-column-custom">
-                    <img src="/assets/img/babyboots.jpg" style="padding-right: 1rem" class="active" alt="product"/>
-                </div>
-                <div class="right-column-custom">
-                    <div class="product-description">
-                        <span>Hand-made</span>
-                        <h1><%= productData[0].product_name %></h1>
-                        <p><%= productData[0].product_description %></p>
-                    </div>
-                    <div class="product-price">
-                        <span>$<%= productData[0].price %></span>
-                        <br><br>
-                        <a href="leaveReview">
-                            <button class="button" type="button">Leave a Review</button>
-                        </a>
-                    </div>
-                </div>
+<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
+<!-- Section-->
+<body class="bg-gradient-primary">
+    <div class="container-custom">
+        <div class="left-column-custom">
+            <img
+                src="<%= productData[0].img_path %>"
+                style="padding-right: 1rem"
+                class="active"
+                alt="product"
+            />
+        </div>
+        <div class="right-column-custom">
+            <div class="product-description">
+                <span>Hand-made</span>
+                <h1><%= productData[0].product_name %></h1>
+                <p><%= productData[0].product_desc %></p>
             </div>
-        </body>
-        
-        </table>
+            <div class="product-price">
+                <span>$<%= productData[0].product_price %></span>
+                <br /><br />
+                <a href="leaveReview">
+                    <button class="button" type="button">Leave a Review</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
 <%- include('Footer') %>
