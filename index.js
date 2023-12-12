@@ -78,6 +78,58 @@ app.get('/leaveReview', (req, res) => {
     res.render(path.join(__dirname + '/views/leaveReview'));
 });
 
+app.post('/addReview', (req, res) => {
+    let dbName = req.body.sName;
+    let dbProductName; //waht
+    let dbRating;
+    let dbReview = req.body.sReview;
+
+    //Rating processing - depends on what we do for the stars
+    if (req.body.iRating == 0) {
+        dbRating = 0;
+    } else if (req.body.iRating == 0.5) {
+        dbRating = 0.5
+    } else if (req.body.iRating == 1) {
+        dbRating = 1
+    } else if (req.body.iRating == 1.5) {
+        dbRating = 1.5
+    } else if (req.body.iRating == 2) {
+        dbRating = 2
+    } else if (req.body.iRating == 2.5) {
+        dbRating = 2.5
+    } else if (req.body.iRating == 3) {
+        dbRating = 3
+    } else if (req.body.iRating == 3.5) {
+        dbRating = 3.5
+    } else if (req.body.iRating == 4) {
+        dbRating = 4
+    } else if (req.body.iRating == 4.5) {
+        dbRating = 4.5
+    } else if (req.body.iRating == 5) {
+        dbRating = 5
+    }
+
+    knex('response')
+        .insert({
+            reviewer_name: dbName,
+            review_text: dbReview,
+            rating: dbRating,
+            product_id: //how do i put this in,
+        })
+        .then(() => {
+            let reviewID;
+            knex.select()
+            .from('response')
+            .orderBy('review_id', 'desc')
+            .then((response) => {
+                reviewID = response[0].review_id;
+
+                res.render(path.join(__dirname + '/views/index.ejs'))
+            })
+        })
+
+});
+
 //Copied over from INDEX, need to create user table in database to adjust changes
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
