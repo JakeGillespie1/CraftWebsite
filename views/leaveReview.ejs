@@ -3,8 +3,65 @@
 <%- include('Header') %>
         <!-- Section 1 (how do i center this??)-->
         <section>
-            <div>
-                        <h2 class="display-4" style="font-family: 'Berkshire Swash';">Leave a Review</h2>
+            <div class="text-center">
+                        <h1 class="display-4" style="font-family: 'Berkshire Swash';">Leave a Review</h1>
+                <form action="/addReview" method="POST" id="reviewForm">
+                    <div class="form-rows">
+                        <div class="labels">
+                            <label for="sName">What is your name?</label>
+                        </div>
+                        <div class="fields">
+                            <input id="sName" name="sName" type="text" maxlength="60" size="30" required>
+                        </div>
+                            <br>
+                        <div class="labels">
+                            <label for="sProduct">What product did you purchase?</label>
+                        </div>
+                        <div class="fields">
+                            <select id="sProduct" name="sProduct" class="dropdowncustom" required>
+                                <option value="" disabled selected> -- Choose a product --</option>
+                                <option value="BabyBoots">Baby Boot</option>
+                                <option value="Baby Quilt">Baby Quilt</option>
+                                <option value="Book Cozy">Book Cozy</option>
+                                <option value="Normal Scrunchie">Normal Scrunchie</option>
+                                <option value="Zipper Scrunchie">Zipper Scrunchie</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="labels">
+                            <label for="iRating">How would you rate this product?</label>
+                        </div>
+                        <div class="fields">
+                            <!--Stars?-->
+                            <span class="rating_stars rating_0">
+                                <span class='s' data-low='0.5' data-high='1'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+                                <span class='s' data-low='1.5' data-high='2'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+                                <span class='s' data-low='2.5' data-high='3'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+                                <span class='s' data-low='3.5' data-high='4'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+                                <span class='s' data-low='4.5' data-high='5'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
+                                                      
+                                <span class='r r0_5' data-rating='1' data-value='0.5'></span>
+                                <span class='r r1' data-rating='1' data-value='1'></span>
+                                <span class='r r1_5' data-rating='15' data-value='1.5'></span>
+                                <span class='r r2' data-rating='2' data-value='2'></span>
+                                <span class='r r2_5' data-rating='25' data-value='2.5'></span>
+                                <span class='r r3' data-rating='3' data-value='3'></span>
+                                <span class='r r3_5' data-rating='35' data-value='3.5'></span>
+                                <span class='r r4' data-rating='4' data-value='4'></span>
+                                <span class='r r4_5' data-rating='45' data-value='4.5'></span>
+                                <span class='r r5' data-rating='5' data-value='5'></span>
+                              </span>
+                            
+                        </div>
+                        <br>
+                        <div class="labels">
+                            <label for="sReview">Please leave your review: (up to 250 characters)</label>
+                        </div>
+                        <div class="fields">
+                            <input type="text" maxlength="250">
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
         <!-- Section 2-->
