@@ -79,7 +79,7 @@ app.get('/leaveReview', (req, res) => {
 
 app.post('/addReview', (req, res) => {
     let dbName = req.body.sName;
-    let dbProductName; //waht
+    let dbProductName = req.body.p_id;
     let dbRating;
     let dbReview = req.body.sReview;
 
@@ -113,7 +113,7 @@ app.post('/addReview', (req, res) => {
             reviewer_name: dbName,
             review_text: dbReview,
             rating: dbRating,
-            product_id: //how do i put this in,
+            product_id: dbProductName
         })
         .then(() => {
             let reviewID;
