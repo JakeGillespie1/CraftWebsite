@@ -10919,6 +10919,12 @@ textarea.form-control-lg {
 }
 
 
+.customText {
+  height: 100px;
+}
+
+
+
 .fields {
   display: inline-block;
   text-align: left;
