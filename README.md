@@ -10,7 +10,9 @@ URL: craftwebsite.is404.net
 Admin login: Go to craftwebsite.is404.net/adminlogin
 <br>
 Username: 2.cfisher@gmail.com
+<br>
 Password: wannaspritecranberry
+<br>
 <br>
 Set up steps when zipping code and using it on a localhost
 <br>
