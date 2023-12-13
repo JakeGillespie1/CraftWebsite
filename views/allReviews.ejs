@@ -28,7 +28,7 @@
                                 <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
                                 <button type="submit" class="btn btn-primary">Edit</button>
                             </form>
-                            <form action="/delete/<%= reviewData[iCount].review_id %>" method="POST">
+                            <form action="/delete" method="POST">
                                 <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
                                 <button type="submit" class="btn btn-primary">Delete</button>
                             </form>
