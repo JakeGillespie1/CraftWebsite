@@ -1,6 +1,7 @@
 <%- include('Head') %>
 <%- include('Navigation') %>
 <%- include('Header') %>
+<!-- This view is like a short form that lets you change the content of a review -->
 <section>
   <div class="text-center">
     <br><br>
@@ -29,6 +30,7 @@
             rows="4" cols="50" name="reviewText" required><%=reviewData[0].review_text %></textarea>
             <br><br>
           </div>
+          <!-- Button to submit -->
           <button class="button" type="submit">Save</button>
           <br><br>
         </div>
