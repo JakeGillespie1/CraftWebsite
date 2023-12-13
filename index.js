@@ -1,6 +1,5 @@
 const express = require('express');
 const ejs = require('ejs');
-let sDate = new Date().getFullYear();
 
 let app = express();
 
@@ -42,7 +41,6 @@ app.get('/', (req, res) => {
         .then((data) => {
             res.render(path.join(__dirname + '/views/index'), {
                 reviewData: data,
-                date: sDate,
             });
         });
 });
