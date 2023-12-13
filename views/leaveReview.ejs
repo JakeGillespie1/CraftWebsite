@@ -1,60 +1,155 @@
-<%- include('Head') %>
-<%- include('Navigation') %>
-<%- include('Header') %>
-        <!-- Section 1 (how do i center this??)-->
-        <br>
-        <section>
-            <div class="text-center">
-                        <h1 class="display-4" style="font-family: 'Berkshire Swash';">Leave a Review</h1>
-                <br>
-                <form action="/addReview" method="POST" id="reviewForm">
-                    <div class="form-rows">
-                        <div class="labels">
-                            <label for="sName">What is your name?</label>
-                        </div>
-                        <div class="fields">
-                            <input id="sName" name="sName" type="text" maxlength="60" size="30" required>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="form-rows">
-                        <div class="labels">
-                            <label for="sName" style="margin-top: 12px">Rate the Product:</label>
-                        </div>
-                        <div class="fields">
-                            <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="5" />
-                                <label for="star5" title="text">5 stars</label>
-                                <input type="radio" id="star4" name="rate" value="4" />
-                                <label for="star4" title="text">4 stars</label>
-                                <input type="radio" id="star3" name="rate" value="3" />
-                                <label for="star3" title="text">3 stars</label>
-                                <input type="radio" id="star2" name="rate" value="2" />
-                                <label for="star2" title="text">2 stars</label>
-                                <input type="radio" id="star1" name="rate" value="1" />
-                                <label for="star1" title="text">1 star</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-rows">
-                        <div class="labels">
-                            <label for="sReview">Please leave your review: <br> (up to 250 characters)</label>
-                        </div>
-                        <div class="fields">
-                            <textarea type="text" maxlength="250" id="sReview" name="sReview" class="customText" rows="4" cols="50" required>
-                            </textarea>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <button type="submit" class="button">Submit Review</button>
-                </form>
-                <br>
-                <br>
+<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
+<!-- Section 1 (how do i center this??)-->
+<br />
+<section>
+    <div class="text-center">
+        <p id="p_id" style="display: none"><%=prod_id%></p>
+        <h1 class="display-4" style="font-family: 'Berkshire Swash'">
+            Leave a Review
+        </h1>
+        <br />
+        <form action="/addReview" method="POST" id="reviewForm">
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sName">What is your name?</label>
+                </div>
+                <div class="fields">
+                    <input
+                        id="sName"
+                        name="sName"
+                        type="text"
+                        maxlength="60"
+                        size="30"
+                        required
+                    />
+                </div>
+                <br />
             </div>
-        </section>
-        <!-- Section 2-->
-        <section>
-            
-        </section>
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sName" style="margin-top: 12px"
+                        >Rate the Product:</label
+                    >
+                </div>
+                <div class="fields">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sReview"
+                        >Please leave your review: <br />
+                        (up to 250 characters)</label
+                    >
+                </div>
+                <div class="fields">
+                    <textarea
+                        type="text"
+                        maxlength="250"
+                        id="sReview"
+                        name="sReview"
+                        class="customText"
+                        rows="4"
+                        cols="50"
+                    >
+                    </textarea>
+                </div>
+            </div>
+            <br />
+            <br />
+            <button type="submit" class="button">Submit Review</button>
+        </form>
+        <br />
+        <br />
+    </div>
+</section>
+<!-- Section 2-->
+<section></section>
+<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
+<!-- Section 1 (how do i center this??)-->
+<br />
+<section>
+    <div class="text-center">
+        <p id="p_id" name="p_id" style="display: none"><%=prod_id%></p>
+        <h1 class="display-4" style="font-family: 'Berkshire Swash'">
+            Leave a Review
+        </h1>
+        <br />
+        <form action="/addReview" method="POST" id="reviewForm">
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sName">What is your name?</label>
+                </div>
+                <div class="fields">
+                    <input
+                        id="sName"
+                        name="sName"
+                        type="text"
+                        maxlength="60"
+                        size="30"
+                        required
+                    />
+                </div>
+                <br />
+            </div>
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sName">Rate the Product</label>
+                </div>
+                <div class="fields">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-rows">
+                <div class="labels">
+                    <label for="sReview"
+                        >Please leave your review: <br />
+                        (up to 250 characters)</label
+                    >
+                </div>
+                <div class="fields">
+                    <textarea
+                        type="text"
+                        maxlength="250"
+                        id="sReview"
+                        name="sReview"
+                        class="customText"
+                        rows="4"
+                        cols="50"
+                    >
+                    </textarea>
+                </div>
+            </div>
+            <br />
+            <button type="submit" class="button">Submit Review</button>
+        </form>
+        <br />
+        <br />
+        <br />
+    </div>
+</section>
+<!-- Section 2-->
+<section></section>
 <%- include('Footer') %>

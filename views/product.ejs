@@ -2,9 +2,6 @@
 <!-- Section-->
 <body class="bg-gradient-primary">
     <div class="container-custom">
-        <p id="p_id" name="p_id" style="display: none">
-            <%=productData[0].product_id%>
-        </p>
         <div class="left-column-custom">
             <img
                 src="<%= productData[0].img_path %>"
@@ -22,7 +19,7 @@
             <div class="product-price">
                 <span>$<%= productData[0].product_price %></span>
                 <br /><br />
-                <a href="leaveReview">
+                <a href="leaveReview/<%=productData[0].product_id%>">
                     <button class="button" type="button">Leave a Review</button>
                 </a>
             </div>
