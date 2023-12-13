@@ -146,7 +146,7 @@ app.post('/userLogin', (req, res) => {
             } 
             else 
             {
-                res.render(path.join(__dirname + '/views/redirect')), {reviewData: results,}
+                res.render(path.join(__dirname + '/views/redirect'), {reviewData: results,})
             }});
         });
 
