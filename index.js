@@ -106,7 +106,7 @@ app.post('/addReview', (req, res) => {
             product_id: dbProductName,
         })
         .then(() => {
-            res.render(path.join(__dirname + '/views/index.ejs'));
+            res.render(path.join(__dirname + '/views/index'));
         });
 });
 
