@@ -10921,7 +10921,7 @@ textarea.form-control-lg {
 
 .customText {
   height: 100px;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 
@@ -10931,6 +10931,8 @@ textarea.form-control-lg {
   text-align: left;
   width: 50%;
   vertical-align: top;
+  margin-top: 15px;
+  margin-left: 50px;
 }
 .labels {
   display: inline-block;
@@ -10939,6 +10941,7 @@ textarea.form-control-lg {
   padding: 5px;
   vertical-align: top;
   margin-top: 10px;
+  margin-right: 5px;
 }
 
 
