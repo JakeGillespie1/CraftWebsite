@@ -3,7 +3,7 @@
 <br />
 <section>
     <div class="text-center">
-        <p id="p_id" style="display: none"><%=prod_id%></p>
+        <p id="p_id" name="p_id" style="display: none"><%=prod_id%></p>
         <h1 class="display-4" style="font-family: 'Berkshire Swash'">
             Leave a Review
         </h1>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="fields">
                     <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5"/>
+                        <input type="radio" id="star5" name="rate" value="5" />
                         <label for="star5" title="text">5 stars</label>
                         <input type="radio" id="star4" name="rate" value="4" />
                         <label for="star4" title="text">4 stars</label>
@@ -76,21 +76,21 @@
 <script>
     //stop scrolling but allows selection for stars
     document.addEventListener('DOMContentLoaded', function () {
-    var labels = document.querySelectorAll('.rate label');
+        var labels = document.querySelectorAll('.rate label');
 
-    labels.forEach(function (label) {
-        label.addEventListener('click', function (event) {
-            event.preventDefault();
+        labels.forEach(function (label) {
+            label.addEventListener('click', function (event) {
+                event.preventDefault();
 
-            var input = label.previousElementSibling;
+                var input = label.previousElementSibling;
 
-            if (!input.checked) {
-                input.checked = true;
+                if (!input.checked) {
+                    input.checked = true;
 
-                // Your additional logic for handling the selected star
-            }
+                    // Your additional logic for handling the selected star
+                }
+            });
         });
     });
-});
 </script>
 <%- include('Footer') %>

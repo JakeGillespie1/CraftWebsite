@@ -76,23 +76,9 @@ app.get('/product/leaveReview/:id', (req, res) => {
 app.post('/addReview', (req, res) => {
     let dbName = req.body.sName;
     let dbProductName = req.body.p_id;
-    let dbRating;
+    console.log('DBDBDB', dbProductName);
+    let dbRating = parseInt(req.body.rate);
     let dbReview = req.body.sReview;
-
-    //Rating processing - depends on what we do for the stars
-    if (req.body.rate == 0) {
-        dbRating = 0;
-    } else if (req.body.rate == 1) {
-        dbRating = 1;
-    } else if (req.body.rate == 2) {
-        dbRating = 2;
-    } else if (req.body.rate == 3) {
-        dbRating = 3;
-    } else if (req.body.rate == 4) {
-        dbRating = 4;
-    } else if (req.body.rate == 5) {
-        dbRating = 5;
-    }
 
     knex('review')
         .insert({
