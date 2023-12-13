@@ -7,6 +7,7 @@ let path = require('path');
 
 let port = process.env.PORT || 3001;
 
+// configure db connection
 let rds_port = process.env.RDS_PORT || 5432;
 let host = process.env.RDS_HOSTNAME || 'localhost';
 let user = process.env.RDS_USERNAME || 'postgres';
@@ -34,6 +35,7 @@ let knex = require('knex')({
     },
 });
 
+//route to home page
 app.get('/', (req, res) => {
     knex.select()
         .from('product')
@@ -44,6 +46,7 @@ app.get('/', (req, res) => {
         });
 });
 
+// route to read all reviews
 app.get('/allReviews', (req, res) => {
     knex.select()
         .from('review')
@@ -54,12 +57,15 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
+// route to view review in edit mode
 app.get('/edit/:reviewID', (req, res) => {
     knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
         .from('review')
         .where('review_id', req.params.reviewID)
         .then((data) => {
-            res.render(path.join(__dirname + '/views/edit'), { reviewData: data });
+            res.render(path.join(__dirname + '/views/edit'), {
+                reviewData: data,
+            });
         })
         .catch((err) => {
             console.log(err);
@@ -67,6 +73,7 @@ app.get('/edit/:reviewID', (req, res) => {
         });
 });
 
+// route that updates review in db
 app.post('/editReview', (req, res) => {
     knex('review')
         .where('review_id', parseInt(req.body.reviewID))
@@ -75,10 +82,11 @@ app.post('/editReview', (req, res) => {
             review_text: req.body.reviewText,
         })
         .then(() => {
-            res.redirect("/allReviews");
+            res.redirect('/allReviews');
         });
 });
 
+// route that deletes review from db
 app.post('/delete/:reviewID', (req, res) => {
     knex('review')
         .where('review_id', req.params.reviewID)
@@ -92,10 +100,12 @@ app.post('/delete/:reviewID', (req, res) => {
         });
 });
 
+// shows the about page
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
 
+// dynamically displays product info from db and relevant reviews
 app.get('/product/:id', (req, res) => {
     let pID = req.params.id;
     if (pID) {
@@ -130,15 +140,18 @@ app.get('/product/:id', (req, res) => {
     }
 });
 
+// route that allows admin to login
 app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
+// route that takes the user to a review entry page
 app.get('/product/leaveReview/:id', (req, res) => {
     let pID = req.params.id;
     res.render(path.join(__dirname + '/views/leaveReview'), { prod_id: pID });
 });
 
+// route that adds a review to the db
 app.post('/addReview/:id', (req, res) => {
     let dbName = req.body.sName;
     let dbProductName = req.params.id;
@@ -156,6 +169,7 @@ app.post('/addReview/:id', (req, res) => {
         .then(() => res.redirect('/'));
 });
 
+// route that verifies if login credentials are correct
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
     knex('user')
