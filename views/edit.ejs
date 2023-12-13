@@ -1,22 +1,36 @@
 <%- include('Head') %>
 <%- include('Navigation') %>
 <%- include('Header') %>
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <form action="/editReview" method="POST">
-              <input type="hidden" id="review_id" name="review_id" required
-              value="<%=reviewData[0].review_id %>">
-              <label for="reviewer_name">Reviewer Name:</label>
-              <input type="text" id="reviewer_name" name="reviewer_name" required
-               value="<%=reviewData[0].reviewer_name %>">
-              <br><br>
-              <label for="review_text">Review Text:</label>
-              <textarea type="text" maxlength="250" id="review_text" class="customText" 
-              rows="4" cols="50" name="review_text" required
-              value="<%=reviewData[0].review_text %>"></textarea>
-              <br><br>
+<section>
+  <div class="text-center">
+      <h1 class="display-4" style="font-family: 'Berkshire Swash'">
+          Edit a Record
+      </h1>
+      <form action="/editReview" method="POST">
+        <div class="form-rows">
+          <div class="labels">
+            <input type="hidden" id="review_id" name="review_id" required
+            value="<%=reviewData[0].review_id %>">
+            <label for="reviewer_name">Reviewer Name:</label>
+          </div>
+          <div class="fields">
+            <input type="text" id="reviewer_name" name="reviewer_name" required
+            value="<%=reviewData[0].reviewer_name %>">
+          </div>
+        </div>
+              <br>
+        <div class="form-rows">
+          <div class="labels">
+            <label for="review_text">Review Text:</label>
+          </div>
+          <div class="fields">
+            <textarea type="text" maxlength="250" id="review_text" class="customText" 
+            rows="4" cols="50" name="review_text" required><%=reviewData[0].review_text %></textarea>
+            <br><br>
             <button type="submit">Save</button>
-          </form> 
+          </div>
+        </div>
+      </form> 
     </div>
 </section>
 <%- include('Footer') %>
