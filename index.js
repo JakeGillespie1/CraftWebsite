@@ -57,9 +57,9 @@ app.get('/allReviews', (req, res) => {
 app.get('/edit/:reviewID', (req, res) => {
     knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
         .from('review')
-        .where('review_id',req.params.id)
-        .then((review) => {
-            res.render('/views/edit', { reviewData: review });
+        .where('review_id',req.params.reviewID)
+        .then((data) => {
+            res.render('/views/edit', { reviewData: data });
         })
         .catch((err) => {
             console.log(err);
