@@ -110,12 +110,13 @@ app.post('/userLogin', (req, res) => {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
+                let iLoggedIn = 1
+
                 knex.select()
                 .from('product')
                 .then((results) => {
                 res.render(path.join(__dirname + '/views/index'), {
-                    reviewData: results,
-                    //login: 'true', Add later?
+                    reviewData: results, logged_in : iLoggedIn,
                 });
                 });
             }
