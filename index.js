@@ -45,6 +45,16 @@ app.get('/', (req, res) => {
         });
 });
 
+app.get('/allReviews', (req, res) => {
+    knex.select()
+        .from('product')
+        .then((data) => {
+            res.render(path.join(__dirname + '/views/allReviews'), {
+                reviewData: data,
+            });
+        });
+});
+
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
