@@ -1,5 +1,6 @@
 const express = require('express');
 const ejs = require('ejs');
+let sDate = new Date().getFullYear();
 
 let app = express();
 
@@ -40,13 +41,9 @@ app.get('/', (req, res) => {
         .from('product')
         .then((data) => {
             res.render(path.join(__dirname + '/views/index'), {
-                reviewData: data,
+                reviewData: data, date : sDate
             });
         });
-});
-
-app.get('/indexInherited', (req, res) => {
-    res.render(path.join(__dirname + '/views/indexInherited'));
 });
 
 app.get('/about', (req, res) => {
@@ -61,7 +58,7 @@ app.get('/product/:id', (req, res) => {
             .where('product_id', '=', pID)
             .then((data) =>
                 res.render(path.join(__dirname + '/views/product'), {
-                    productData: data,
+                    productData: data, 
                 })
             );
     }
