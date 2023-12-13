@@ -54,10 +54,10 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
-app.get('/edit', (req, res) => {
+app.get('/edit/:id', (req, res) => {
     knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
         .from('review')
-        .where('review_id', req.query.review_id)
+        .where('review_id', req.query.id)
         .then((review) => {
             res.render('edit', { reviewData: review });
         })
