@@ -110,7 +110,7 @@ app.post('/userLogin', (req, res) => {
                 //user credentials invalid
                 res.status(401).json({ message: 'Invalid Credentials' });
             } else {
-                res.render(path.join(__dirname + '/views/index'), {
+                res.render(path.join(__dirname + '/views/index.ejs'), {
                     reviewData: data,
                     //login: 'true', Add later?
                 });
