@@ -67,14 +67,18 @@ app.get('/edit/:id', (req, res) => {
         });
 });
 
-app.post("/deleteBand/:id", (req, res) => {
-    knex("review").where("review_id", req.params.id).del().then(reviewData => {
-        res.redirect("/");
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    })
-}); 
+app.post('/deleteBand/:id', (req, res) => {
+    knex('review')
+        .where('review_id', req.params.id)
+        .del()
+        .then((reviewData) => {
+            res.redirect('/');
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
 
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
@@ -124,15 +128,7 @@ app.post('/addReview/:id', (req, res) => {
             rating: dbRating,
             product_id: dbProductName,
         })
-        .then(() => {
-            knex.select()
-                .from('product')
-                .then((data) => {
-                    res.render(path.join(__dirname + '/views/index'), {
-                        reviewData: data,
-                    });
-                });
-        });
+        .then(() => res.render(path.join(__dirname + '/views/redirect')));
 });
 
 app.post('/userLogin', (req, res) => {
