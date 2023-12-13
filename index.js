@@ -73,7 +73,7 @@ app.post('/delete/:id', (req, res) => {
         .where('review_id', "=", req.params.id)
         .del()
         .then(() => {
-            res.redirect('/');
+            res.redirect('/allReviews');
         })
         .catch((err) => {
             console.log(err);
