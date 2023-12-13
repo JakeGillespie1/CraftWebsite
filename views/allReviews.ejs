@@ -25,11 +25,11 @@
                         <td>
                             <!-- You can add buttons or links for actions like editing or deleting the review -->
                             <input type="hidden" id="reviewID" name="reviewID">
-                            <form action="/edit" method="GET">
+                            <form action="/edit/<%= reviewData[iCount].review_id %>" method="GET">
                                 <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
                                 <button type="submit" class="btn btn-primary">Edit</button>
                             </form>
-                            <form action="/delete" method="POST">
+                            <form action="/delete/<%= reviewData[iCount].review_id %>" method="POST">
                                 <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
