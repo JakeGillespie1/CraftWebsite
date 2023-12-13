@@ -1,5 +1,6 @@
 <%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
 <!-- Section-->
+<!-- this page dynamically shows images based on what product the user clicks on from the catalog -->
 <body class="bg-gradient-primary">
     <div style="margin: 100px" class="container-custom">
         <div class="left-column-custom" style="padding-right: 50px">
@@ -21,12 +22,14 @@
                     >$<%= productData[0].product_price %>.00</span
                 >
                 <br /><br />
+                <!-- button for leaving a review on the product -->
                 <a href="leaveReview/<%=productData[0].product_id%>">
                     <button class="button" type="button">Leave a Review</button>
                 </a>
             </div>
         </div>
     </div>
+    <!-- displays all reviews associated with that product -->
     <div class="container-custom">
         <ul style="list-style-type: none">
             <li>
