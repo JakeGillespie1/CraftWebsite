@@ -73,4 +73,24 @@
         <br />
     </div>
 </section>
+<script>
+    //stop scrolling but allows selection for stars
+    document.addEventListener('DOMContentLoaded', function () {
+    var labels = document.querySelectorAll('.rate label');
+
+    labels.forEach(function (label) {
+        label.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var input = label.previousElementSibling;
+
+            if (!input.checked) {
+                input.checked = true;
+
+                // Your additional logic for handling the selected star
+            }
+        });
+    });
+});
+</script>
 <%- include('Footer') %>
