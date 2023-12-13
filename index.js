@@ -112,7 +112,7 @@ app.get('/product/:id', (req, res) => {
                             .from('review')
                             .where('product_id', '=', pID)
                             .select(
-                                db.raw('ROUND(AVG(rating), 1) as avg_rating')
+                                knex.raw('ROUND(AVG(rating), 1) as avg_rating')
                             )
                             .then((reviewsAvg) =>
                                 res.render(
