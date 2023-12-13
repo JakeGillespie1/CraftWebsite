@@ -67,8 +67,8 @@ app.get('/edit/:id', (req, res) => {
         });
 });
 
-app.post('/delete/:id', (req, res) => {
-    console.log("Gabe is gay", req.params.id)
+app.post('/delete', (req, res) => {
+    console.log("Gabe is gay", req.body.)
     knex('review')
         .where('review_id', "=", req.params.id)
         .del()
