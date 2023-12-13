@@ -38,12 +38,12 @@ let knex = require('knex')({
 app.get('/', (req, res) => {
     knex.select()
         .from('product')
-        .then((data) =>{
+        .then((data) => {
             data.year = new Date().getFullYear();
             res.render(path.join(__dirname + '/views/index'), {
                 reviewData: data,
-            })}
-        );
+            });
+        });
 });
 
 app.get('/indexInherited', (req, res) => {
@@ -87,15 +87,15 @@ app.post('/addReview', (req, res) => {
     if (req.body.iRating == 0) {
         dbRating = 0;
     } else if (req.body.iRating == 1) {
-        dbRating = 1
+        dbRating = 1;
     } else if (req.body.iRating == 2) {
-        dbRating = 2
+        dbRating = 2;
     } else if (req.body.iRating == 3) {
-        dbRating = 3
+        dbRating = 3;
     } else if (req.body.iRating == 4) {
-        dbRating = 4
+        dbRating = 4;
     } else if (req.body.iRating == 5) {
-        dbRating = 5
+        dbRating = 5;
     }
 
     knex('response')
@@ -103,12 +103,12 @@ app.post('/addReview', (req, res) => {
             reviewer_name: dbName,
             review_text: dbReview,
             rating: dbRating,
-            product_id: dbProductName
+            product_id: dbProductName,
         })
         .then(() => {
-            res.render(path.join(__dirname + '/views/index.ejs'))
-            })
+            res.render(path.join(__dirname + '/views/index.ejs'));
         });
+});
 
 //Copied over from INDEX, need to create user table in database to adjust changes
 app.post('/userLogin', (req, res) => {
