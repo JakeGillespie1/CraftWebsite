@@ -1,5 +1,5 @@
 <%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
-<!-- Section 1 (how do i center this??)-->
+<!-- Form to collect review data on a certain product -->
 <br />
 <section>
     <div class="text-center">
@@ -30,6 +30,7 @@
                         >Rate the Product:</label
                     >
                 </div>
+                <!-- this allows the user to select the number of stars they rate the product -->
                 <div class="fields">
                     <div class="rate">
                         <input type="radio" id="star5" name="rate" value="5" />
@@ -45,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            <!-- the review itself -->
             <div class="form-rows">
                 <div class="labels">
                     <label for="sReview"
@@ -85,8 +87,6 @@
 
                 if (!input.checked) {
                     input.checked = true;
-
-                    // Your additional logic for handling the selected star
                 }
             });
         });
