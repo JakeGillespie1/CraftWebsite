@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 
 app.get('/allReviews', (req, res) => {
     knex.select()
-        .from('product')
+        .from('review')
         .then((data) => {
             res.render(path.join(__dirname + '/views/allReviews'), {
                 reviewData: data,
@@ -54,14 +54,43 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
-app.get("/edit", (req, res) => {
-    knex.select("review_id", "reviewer_name", "review_text", "product_id").from("review").where("band_name", req.query.bandName.toUpperCase()).then(bands => {
-        res.render("editBand", {mybands: bands});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    });    
-});  
+app.get('/edit/:reviewID', (req, res) => {
+    knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
+        .from('review')
+        .where('review_id', req.params.reviewID)
+        .then((data) => {
+            res.render('/views/edit', { reviewData: data });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
+
+app.post('/editReview', (req, res) => {
+    knex('review')
+        .where('review_id', parseInt(req.body.reviewID))
+        .update({
+            reviewer_name: req.body.reviewerName,
+            review_text: req.body.reviewText,
+        })
+        .then((reviewData) => {
+            res.redirect('/views/allReviews');
+        });
+});
+
+app.post('/delete/:reviewID', (req, res) => {
+    knex('review')
+        .where('review_id', req.params.reviewID)
+        .del()
+        .then((reviewData) => {
+            res.redirect('/allReviews');
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
 
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
@@ -76,13 +105,26 @@ app.get('/product/:id', (req, res) => {
             .then((data) =>
                 knex
                     .select()
-                    .from('reviews')
+                    .from('review')
                     .where('product_id', '=', pID)
                     .then((reviews) =>
-                        res.render(path.join(__dirname + '/views/product'), {
-                            productData: data,
-                            productReviews: reviews,
-                        })
+                        knex
+                            .from('review')
+                            .where('product_id', '=', pID)
+                            .select(
+                                knex.raw('ROUND(AVG(rating), 1) as avg_rating')
+                            )
+                            .then((reviewsAvg) =>
+                                res.render(
+                                    path.join(__dirname + '/views/product'),
+                                    {
+                                        productData: data,
+                                        productReviews: reviews,
+                                        prodReviewsAvg:
+                                            reviewsAvg[0].avg_rating,
+                                    }
+                                )
+                            )
                     )
             );
     }
@@ -97,9 +139,9 @@ app.get('/product/leaveReview/:id', (req, res) => {
     res.render(path.join(__dirname + '/views/leaveReview'), { prod_id: pID });
 });
 
-app.post('/addReview', (req, res) => {
+app.post('/addReview/:id', (req, res) => {
     let dbName = req.body.sName;
-    let dbProductName = req.body.p_id;
+    let dbProductName = req.params.id;
     console.log('DBDBDB', dbProductName);
     let dbRating = parseInt(req.body.rate);
     let dbReview = req.body.sReview;
@@ -111,15 +153,7 @@ app.post('/addReview', (req, res) => {
             rating: dbRating,
             product_id: dbProductName,
         })
-        .then(() => {
-            knex.select()
-                .from('product')
-                .then((data) => {
-                    res.render(path.join(__dirname + '/views/index'), {
-                        reviewData: data,
-                    });
-                });
-        });
+        .then(() => res.render(path.join(__dirname + '/views/redirect')));
 });
 
 app.post('/userLogin', (req, res) => {
@@ -127,18 +161,14 @@ app.post('/userLogin', (req, res) => {
     knex('user')
         .where('password', req.body.userpassword)
         .andWhere('email', req.body.useremail)
-        .select('password', 'email')
+        .select()
         .then((results) => {
             if (results.length == 0) {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
-                knex.select()
-                .from('product')
-                .then((results) => {
                 res.render(path.join(__dirname + '/views/redirect'), {
                     reviewData: results,
-                });
                 });
             }
         });

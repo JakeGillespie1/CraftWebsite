@@ -3,12 +3,11 @@
 <br />
 <section>
     <div class="text-center">
-        <p id="p_id" name="p_id" style="display: none"><%=prod_id%></p>
         <h1 class="display-4" style="font-family: 'Berkshire Swash'">
             Leave a Review
         </h1>
         <br />
-        <form action="/addReview" method="POST" id="reviewForm">
+        <form action="/addReview/<%=prod_id%>" method="POST" id="reviewForm">
             <div class="form-rows">
                 <div class="labels">
                     <label for="sName">What is your name?</label>

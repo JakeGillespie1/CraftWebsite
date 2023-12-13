@@ -1,9 +1,10 @@
 <%- include('Head') %> <%- include('Header') %>
 
-<section onload="gatherLog();">
-    <h1>
-        Successfully Logged In
-      </h1>
+<body onload="getData();">
+    <br><br>
+    <h1 style="text-align: center;">
+        Success
+    </h1>
     <p id="logged_in" style="display: none;"><%= reviewData[0].logged_in %></p>
 <script>
     // Wait for 1000 milliseconds (1 second) before redirecting
@@ -11,11 +12,11 @@
       location.href = "https://craftwebsite.is404.net";
     }, 1000);
 
-    function gatherLog()
+    function getData()
     {
-        localStorage.setItem(loggedIn, document.getElementById("logged_in").innerHTML);
+        localStorage.setItem('loggedIn', document.getElementById("logged_in").innerHTML)
     }
-</script>
-</section>
 
-<%- include('Footer') %>
+</script>
+</body>
+</html>
