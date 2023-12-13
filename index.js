@@ -111,7 +111,7 @@ app.post('/userLogin', (req, res) => {
                 res.render(path.join(__dirname + '/views/errorPage.ejs'));
             } else {
                 res.render(path.join(__dirname + '/views/index.ejs'), {
-                    reviewData: data,
+                    reviewData: results,
                     //login: 'true', Add later?
                 });
             }
