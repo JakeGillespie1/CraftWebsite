@@ -1,14 +1,14 @@
-<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
-
-<!-- Section-->
+<%- include('Head') %>
+<%- include('Navigation') %>
+<%- include('Header') %>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
         <% for (let iCount = 0; iCount < reviewData.length; iCount++){%>
-            <div class="col mb-5 box" id="myBox">
-                <a style="text-decoration: none; color: black;" href="product/<%=reviewData[iCount].product_id%>"></a>
+            <a style="text-decoration: none; color: black;" href="product/<%=reviewData[iCount].product_id%>">
+                <div class="col mb-5 box" id="myBox">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img
@@ -24,8 +24,8 @@
                             </div>
                         </div>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         <%}%>
                     <!-- Product actions-->
                     <div
@@ -38,5 +38,4 @@
         </div>
     </div>
 </section>
-
 <%- include('Footer') %>

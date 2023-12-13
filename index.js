@@ -34,12 +34,22 @@ let knex = require('knex')({
     },
 });
 
-//send message to user that displays the text in the send method
+
 app.get('/', (req, res) => {
     knex.select()
         .from('product')
         .then((data) => {
             res.render(path.join(__dirname + '/views/index'), {
+                reviewData: data,
+            });
+        });
+});
+
+app.get('/allReviews', (req, res) => {
+    knex.select()
+        .from('product')
+        .then((data) => {
+            res.render(path.join(__dirname + '/views/allReviews'), {
                 reviewData: data,
             });
         });
@@ -63,7 +73,7 @@ app.get('/product/:id', (req, res) => {
     }
 });
 
-//send message to user that displays the text in the send method
+
 app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
