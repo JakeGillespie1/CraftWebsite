@@ -6,12 +6,14 @@
         <form action="/editReview" method="POST">
             <fieldset style="width: 0px;">
               <legend>Edit a Country:</legend>
-              <input type="hidden" id="country_id" name="review_id" value="<%=reviewData[0].review_id %>">
-              <label for="country_name">Reviewer Name:</label>
+              <input type="hidden" id="review_id" name="review_id" value="<%=reviewData[0].review_id %>">
+              <label for="reviewer_name">Reviewer Name:</label>
               <input type="text" id="reviewer_name" name="reviewer_name" value="<%=reviewData[0].reviewer_name %>">
               <br><br>
-              <label for="popular_site">Review Text:</label>
-              <textarea type="text" maxlength="250" id="review_text" class="customText" rows="4" cols="50" name="review_text" value="<%=reviewData[0].review_text %>">
+              <label for="review_text">Review Text:</label>
+              <textarea type="text" maxlength="250" id="review_text" class="customText" 
+              rows="4" cols="50" name="review_text" value="<%=reviewData[0].review_text %>">
+              </textarea>
               <br><br>
             </fieldset>
             <button type="submit">Save</button>
