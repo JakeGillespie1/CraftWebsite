@@ -1,4 +1,4 @@
-<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
+<%- include('Head') %> <%- include('Header') %>
 
     <h1>
       Woops! <br>Something went wrong :(
@@ -6,5 +6,13 @@
     <h2>
      Have you tried turning it off and on again?
     </h2>
+
+    <script>
+        // Wait for a 2 milliseconds (2 seconds) before redirecting
+        setTimeout(function() {
+          location.href = "https://craftwebsite.is404.net";
+    }, 2000);
+    </script>
+
 
 <%- include('Footer') %>

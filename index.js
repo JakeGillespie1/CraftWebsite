@@ -54,6 +54,15 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
+app.get("/edit", (req, res) => {
+    knex.select("review_id", "reviewer_name", "review_text", "product_id").from("review").where("band_name", req.query.bandName.toUpperCase()).then(bands => {
+        res.render("editBand", {mybands: bands});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });    
+});  
+
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
@@ -124,15 +133,13 @@ app.post('/userLogin', (req, res) => {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
-                let iLoggedIn = 1;
                 knex.select()
-                    .from('product')
-                    .then((results) => {
-                        res.render(path.join(__dirname + '/views/redirect'), {
-                            reviewData: results,
-                            logged_in: iLoggedIn,
-                        });
-                    });
+                .from('product')
+                .then((results) => {
+                res.render(path.join(__dirname + '/views/redirect'), {
+                    reviewData: results,
+                });
+                });
             }
         });
 });
