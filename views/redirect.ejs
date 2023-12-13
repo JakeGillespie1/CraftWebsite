@@ -1,9 +1,10 @@
 <%- include('Head') %> <%- include('Header') %>
 
 <section onload="gatherLog();">
-    <h1>
+    <br><br>
+    <h1 style="justify-content: center;">
         Successfully Logged In
-      </h1>
+    </h1>
     <p id="logged_in" style="display: none;"><%= reviewData[0].logged_in %></p>
 <script>
     // Wait for 1000 milliseconds (1 second) before redirecting
@@ -17,5 +18,3 @@
     }
 </script>
 </section>
-
-<%- include('Footer') %>
