@@ -112,7 +112,6 @@ app.post('/userLogin', (req, res) => {
             } else {
                 res.render(path.join(__dirname + '/views/index'), {
                     reviewData: data,
-                    date: sDate,
                     //login: 'true', Add later?
                 });
             }
