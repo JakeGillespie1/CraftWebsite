@@ -1,0 +1,21 @@
+<%- include('Head') %>
+<%- include('Navigation') %>
+<%- include('Header') %>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <form action="/editReview" method="POST">
+            <fieldset style="width: 0px;">
+              <legend>Edit a Country:</legend>
+              <input type="hidden" id="country_id" name="review_id" value="<%=reviewData[0].review_id %>">
+              <label for="country_name">Reviewer Name:</label>
+              <input type="text" id="reviewer_name" name="reviewer_name" value="<%=reviewData[0].reviewer_name %>">
+              <br><br>
+              <label for="popular_site">Review Text:</label>
+              <textarea type="text" maxlength="250" id="review_text" class="customText" rows="4" cols="50" name="review_text" value="<%=reviewData[0].review_text %>">
+              <br><br>
+            </fieldset>
+            <button type="submit">Save</button>
+          </form> 
+    </div>
+</section>
+<%- include('Footer') %>

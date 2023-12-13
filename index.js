@@ -67,11 +67,22 @@ app.get('/edit/:reviewID', (req, res) => {
         });
 });
 
+app.post('/editReview', (req,res) => {
+    knex('review')
+    .where('review_id',parseInt(req.body.reviewID))
+    .update({
+        reviewer_name : req.body.reviewerName,
+        review_text : req.body.reviewText})
+    .then(reviewData => {
+        res.redirect('/views/allReviews')
+    })
+})
+
 app.post('/delete/:reviewID', (req, res) => {
     knex('review')
         .where('review_id', req.params.reviewID)
         .del()
-        .then(() => {
+        .then(reviewData => {
             res.redirect('/allReviews');
         })
         .catch((err) => {
