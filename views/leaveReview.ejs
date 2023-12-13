@@ -2,49 +2,12 @@
 <%- include('Navigation') %>
 <%- include('Header') %>
         <!-- Section 1 (how do i center this??)-->
-
-<script>
-    jQuery(document).ready(function($) {
-$('.rating_stars span.r').hover(function() {
-            // get hovered value
-            var rating = $(this).data('rating');
-            var value = $(this).data('value');
-            $(this).parent().attr('class', '').addClass('rating_stars').addClass('rating_'+rating);
-            highlight_star(value);
-        }, function() {
-            // get hidden field value
-            var rating = $("#rating").val();
-            var value = $("#rating_val").val();
-            $(this).parent().attr('class', '').addClass('rating_stars').addClass('rating_'+rating);
-            highlight_star(value);
-        }).click(function() {
-            // Set hidden field value
-            var value = $(this).data('value');
-            $("#rating_val").val(value);
-
-            var rating = $(this).data('rating');
-            $("#rating").val(rating);
-            
-            highlight_star(value);
-        });
-        
-        var highlight_star = function(rating) {
-            $('.rating_stars span.s').each(function() {
-                var low = $(this).data('low');
-                var high = $(this).data('high');
-                $(this).removeClass('active-high').removeClass('active-low');
-                if (rating >= high) $(this).addClass('active-high');
-                else if (rating == low) $(this).addClass('active-low');
-            });
-        }
-});
-</script>
         <br>
         <section>
             <div class="text-center">
                         <h1 class="display-4" style="font-family: 'Berkshire Swash';">Leave a Review</h1>
                 <br>
-                        <form action="/addReview" method="POST" id="reviewForm">
+                <form action="/addReview" method="POST" id="reviewForm">
                     <div class="form-rows">
                         <div class="labels">
                             <label for="sName">What is your name?</label>
@@ -53,31 +16,27 @@ $('.rating_stars span.r').hover(function() {
                             <input id="sName" name="sName" type="text" maxlength="60" size="30" required>
                         </div>
                         <br>
+                    </div>
+                    <div class="form-rows">
                         <div class="labels">
-                            <label for="iRating">How would you rate this product?</label>
+                            <label for="sName">Rate the Product</label>
                         </div>
                         <div class="fields">
-                            <!--Stars? Doesn't work yet-->
-                            <span class="rating_stars rating_0">
-                                <span class='s' data-low='0.5' data-high='1'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-                                <span class='s' data-low='1.5' data-high='2'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-                                <span class='s' data-low='2.5' data-high='3'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-                                <span class='s' data-low='3.5' data-high='4'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-                                <span class='s' data-low='4.5' data-high='5'><i class="fa fa-star-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star"></i></span>
-                                                    
-                                <span class='r r0_5' data-rating='1' data-value='0.5'></span>
-                                <span class='r r1' data-rating='1' data-value='1'></span>
-                                <span class='r r1_5' data-rating='15' data-value='1.5'></span>
-                                <span class='r r2' data-rating='2' data-value='2'></span>
-                                <span class='r r2_5' data-rating='25' data-value='2.5'></span>
-                                <span class='r r3' data-rating='3' data-value='3'></span>
-                                <span class='r r3_5' data-rating='35' data-value='3.5'></span>
-                                <span class='r r4' data-rating='4' data-value='4'></span>
-                                <span class='r r4_5' data-rating='45' data-value='4.5'></span>
-                                <span class='r r5' data-rating='5' data-value='5'></span>
-                            </span>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
                         </div>
-                        <br>
+                    </div>
+                    <div class="form-rows">
                         <div class="labels">
                             <label for="sReview">Please leave your review: <br> (up to 250 characters)</label>
                         </div>
@@ -85,11 +44,10 @@ $('.rating_stars span.r').hover(function() {
                             <textarea type="text" maxlength="250" id="sReview" name="sReview" class="customText" rows="4" cols="50">
                             </textarea>
                         </div>
-    
+                    </div>
+                    <br>
+                    <button type="submit" class="button">Submit</button>
                 </form>
-                <br>
-                <br>
-                <button type="submit" class="button">Submit Review</button>
                 <br>
                 <br>
                 <br>
