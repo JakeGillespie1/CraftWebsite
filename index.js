@@ -54,14 +54,18 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
-app.get("/edit", (req, res) => {
-    knex.select("review_id", "reviewer_name", "review_text", "product_id").from("review").where("review_id", req.query.review_id).then(review => {
-        res.render("edit", {reviewData: review});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    });    
-});  
+app.get('/edit', (req, res) => {
+    knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
+        .from('review')
+        .where('review_id', req.query.review_id)
+        .then((review) => {
+            res.render('edit', { reviewData: review });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
 
 app.post("/deleteBand/:id", (req, res) => {
     knex("review").where("review_id", req.params.id).del().then(reviewData => {
@@ -85,7 +89,7 @@ app.get('/product/:id', (req, res) => {
             .then((data) =>
                 knex
                     .select()
-                    .from('reviews')
+                    .from('review')
                     .where('product_id', '=', pID)
                     .then((reviews) =>
                         res.render(path.join(__dirname + '/views/product'), {
@@ -142,13 +146,11 @@ app.post('/userLogin', (req, res) => {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
-                let iLoggedIn = 1;
                 knex.select()
                     .from('product')
                     .then((results) => {
                         res.render(path.join(__dirname + '/views/redirect'), {
                             reviewData: results,
-                            logged_in: iLoggedIn,
                         });
                     });
             }
