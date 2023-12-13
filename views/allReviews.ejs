@@ -1,6 +1,4 @@
-<%- include('Head') %>
-<%- include('Navigation') %>
-<%- include('Header') %>
+<%- include('Head') %> <%- include('Navigation') %> <%- include('Header') %>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <table class="table table-bordered">
@@ -15,25 +13,35 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (let iCount = 0; iCount < reviewData.length; iCount++) { %>
-                    <tr>
-                        <td><%=reviewData[iCount].review_id%></td>
-                        <td><%=reviewData[iCount].reviewer_name%></td>
-                        <td><%=reviewData[iCount].review_text%></td>
-                        <td><%=reviewData[iCount].rating%></td>
-                        <td><%=reviewData[iCount].product_id%></td>
-                        <td>
-                            <!-- Edit and delete -->
-                            <form action="/edit/<%= reviewData[iCount].review_id %>" method="GET">
-                                <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
-                                <button type="submit" class="button">Edit</button>
-                            </form>
-                            <form action="/delete/<%= reviewData[iCount].review_id %>" method="POST">
-                                <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
-                                <button type="submit" class="button">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                <% for (let iCount = 0; iCount < reviewData.length; iCount++) {
+                %>
+                <tr>
+                    <td><%=reviewData[iCount].review_id%></td>
+                    <td><%=reviewData[iCount].reviewer_name%></td>
+                    <td><%=reviewData[iCount].review_text%></td>
+                    <td><%=reviewData[iCount].rating%></td>
+                    <td><%=reviewData[iCount].product_id%></td>
+                    <td>
+                        <!-- Edit and delete -->
+                        <form
+                            action="/edit/<%= reviewData[iCount].review_id %>"
+                            method="GET"
+                        >
+                            <button type="submit" class="button">Edit</button>
+                        </form>
+                        <form
+                            action="/delete/<%= reviewData[iCount].review_id %>"
+                            method="POST"
+                        >
+                            <input
+                                type="hidden"
+                                name="reviewID"
+                                value="<%=reviewData[iCount].review_id%>"
+                            />
+                            <button type="submit" class="button">Delete</button>
+                        </form>
+                    </td>
+                </tr>
                 <% } %>
             </tbody>
         </table>
