@@ -7,9 +7,9 @@
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
         <% for (let iCount = 0; iCount < reviewData.length; iCount++){%>
-            <div class="col mb-5 box" id="myBox">
+            <div class="col mb-5">
                 <a style="text-decoration: none; color: black;" href="product/<%=reviewData[iCount].product_id%>"></a>
-                    <div class="card h-100">
+                    <div class="card h-100 box" id="myBox">
                         <!-- Product image-->
                         <img
                             class="card-img-top"
