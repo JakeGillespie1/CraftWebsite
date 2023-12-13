@@ -137,7 +137,7 @@ app.post('/userLogin', (req, res) => {
     knex('user')
         .where('password', req.body.userpassword)
         .andWhere('email', req.body.useremail)
-        .select('password', 'email')
+        .select()
         .then((results) => {
             if (results.length == 0) 
             {
