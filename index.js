@@ -84,17 +84,17 @@ app.post('/addReview', (req, res) => {
     let dbReview = req.body.sReview;
 
     //Rating processing - depends on what we do for the stars
-    if (req.body.iRating == 0) {
+    if (req.body.rate == 0) {
         dbRating = 0;
-    } else if (req.body.iRating == 1) {
+    } else if (req.body.rate == 1) {
         dbRating = 1;
-    } else if (req.body.iRating == 2) {
+    } else if (req.body.rate == 2) {
         dbRating = 2;
-    } else if (req.body.iRating == 3) {
+    } else if (req.body.rate == 3) {
         dbRating = 3;
-    } else if (req.body.iRating == 4) {
+    } else if (req.body.rate == 4) {
         dbRating = 4;
-    } else if (req.body.iRating == 5) {
+    } else if (req.body.rate == 5) {
         dbRating = 5;
     }
 
