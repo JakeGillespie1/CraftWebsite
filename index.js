@@ -101,9 +101,9 @@ app.get('/product/leaveReview/:id', (req, res) => {
     res.render(path.join(__dirname + '/views/leaveReview'), { prod_id: pID });
 });
 
-app.post('/addReview', (req, res) => {
+app.post('/addReview/:id', (req, res) => {
     let dbName = req.body.sName;
-    let dbProductName = req.body.p_id;
+    let dbProductName = req.params.id;
     console.log('DBDBDB', dbProductName);
     let dbRating = parseInt(req.body.rate);
     let dbReview = req.body.sReview;
