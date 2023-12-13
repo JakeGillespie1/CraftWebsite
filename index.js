@@ -59,7 +59,7 @@ app.get('/edit/:id', (req, res) => {
         .from('review')
         .where('review_id', "=", req.query.id)
         .then((review) => {
-            res.render('edit', { reviewData: review });
+            res.render('/views/edit', { reviewData: review });
         })
         .catch((err) => {
             console.log(err);
