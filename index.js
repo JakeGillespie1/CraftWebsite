@@ -98,7 +98,7 @@ app.post('/addReview', (req, res) => {
         dbRating = 5;
     }
 
-    knex('response')
+    knex('review')
         .insert({
             reviewer_name: dbName,
             review_text: dbReview,
