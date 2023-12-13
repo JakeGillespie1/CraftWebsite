@@ -34,7 +34,6 @@ let knex = require('knex')({
     },
 });
 
-
 app.get('/', (req, res) => {
     knex.select()
         .from('product')
@@ -55,6 +54,15 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
+app.get("/edit", (req, res) => {
+    knex.select("review_id", "reviewer_name", "review_text", "product_id").from("review").where("band_name", req.query.bandName.toUpperCase()).then(bands => {
+        res.render("editBand", {mybands: bands});
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    });    
+});  
+
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
 });
@@ -66,13 +74,19 @@ app.get('/product/:id', (req, res) => {
             .from('product')
             .where('product_id', '=', pID)
             .then((data) =>
-                res.render(path.join(__dirname + '/views/product'), {
-                    productData: data,
-                })
+                knex
+                    .select()
+                    .from('reviews')
+                    .where('product_id', '=', pID)
+                    .then((reviews) =>
+                        res.render(path.join(__dirname + '/views/product'), {
+                            productData: data,
+                            productReviews: reviews,
+                        })
+                    )
             );
     }
 });
-
 
 app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
@@ -108,7 +122,6 @@ app.post('/addReview', (req, res) => {
         });
 });
 
-
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
     knex('user')
@@ -120,15 +133,15 @@ app.post('/userLogin', (req, res) => {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
-                let iLoggedIn = 1
+                let iLoggedIn = 1;
                 knex.select()
-                .from('product')
-                .then((results) => {
-                res.render(path.join(__dirname + '/views/redirect'), {
-                    reviewData: results, 
-                    logged_in : iLoggedIn,
-                });
-                });
+                    .from('product')
+                    .then((results) => {
+                        res.render(path.join(__dirname + '/views/redirect'), {
+                            reviewData: results,
+                            logged_in: iLoggedIn,
+                        });
+                    });
             }
         });
 });
