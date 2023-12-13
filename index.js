@@ -54,14 +54,18 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
-app.get("/edit", (req, res) => {
-    knex.select("review_id", "reviewer_name", "review_text", "product_id").from("review").where("band_name", req.query.bandName.toUpperCase()).then(bands => {
-        res.render("editBand", {mybands: bands});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
-    });    
-});  
+app.get('/edit', (req, res) => {
+    knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
+        .from('review')
+        .where('band_name', req.query.bandName.toUpperCase())
+        .then((bands) => {
+            res.render('editBand', { mybands: bands });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
 
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
@@ -76,7 +80,7 @@ app.get('/product/:id', (req, res) => {
             .then((data) =>
                 knex
                     .select()
-                    .from('reviews')
+                    .from('review')
                     .where('product_id', '=', pID)
                     .then((reviews) =>
                         res.render(path.join(__dirname + '/views/product'), {
@@ -134,12 +138,12 @@ app.post('/userLogin', (req, res) => {
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
                 knex.select()
-                .from('product')
-                .then((results) => {
-                res.render(path.join(__dirname + '/views/redirect'), {
-                    reviewData: results,
-                });
-                });
+                    .from('product')
+                    .then((results) => {
+                        res.render(path.join(__dirname + '/views/redirect'), {
+                            reviewData: results,
+                        });
+                    });
             }
         });
 });
