@@ -4,7 +4,6 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <form action="/editReview" method="POST">
-            <fieldset style="width: 0px;">
               <input type="hidden" id="review_id" name="review_id" required
               value="<%=reviewData[0].review_id %>">
               <label for="reviewer_name">Reviewer Name:</label>
@@ -16,7 +15,6 @@
               rows="4" cols="50" name="review_text" required
               value="<%=reviewData[0].review_text %>"></textarea>
               <br><br>
-            </fieldset>
             <button type="submit">Save</button>
           </form> 
     </div>
