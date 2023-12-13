@@ -3,8 +3,17 @@
 <br>
 Project 3 IS 403
 <br>
-Breanna, Jake, Gabe, Lili
-<br><br><br>
+Brenna, Jake, Gabe, Lili
+<br><br>
+URL: craftwebsite.is404.net
+<br>
+Admin login: Go to craftwebsite.is404.net/adminlogin
+<br>
+Username: 2.cfisher@gmail.com
+<br>
+Password: wannaspritecranberry
+<br>
+<br>
 Set up steps when zipping code and using it on a localhost
 <br>
 Step 1:
