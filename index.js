@@ -125,7 +125,8 @@ app.post('/userLogin', (req, res) => {
                 .from('product')
                 .then((results) => {
                 res.render(path.join(__dirname + '/views/redirect'), {
-                    reviewData: results, logged_in : iLoggedIn,
+                    reviewData: results, 
+                    logged_in : iLoggedIn,
                 });
                 });
             }
