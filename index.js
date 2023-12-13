@@ -74,8 +74,8 @@ app.post('/editReview', (req, res) => {
             reviewer_name: req.body.reviewerName,
             review_text: req.body.reviewText,
         })
-        .then((reviewData) => {
-            res.redirect(path.join(__dirname + '/views/allReviews'), {reviewData : reviewData});
+        .then(() => {
+            res.redirect("/allReviews");
         });
 });
 
