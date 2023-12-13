@@ -16,7 +16,11 @@
                 let sYear = new Date().getFullYear();
                 document.getElementById("copyright").innerHTML = "Copyright &copy; A Little Bit of Grandma " + sYear + "."
 
-                if (localStorage.getItem('logged_in').includes("true")) {
+                if (localStorage.getItem('loggedIn').includes("true")) {
+                    document.getElementById("allReviewNavItems").style.display = "block";
+                    document.getElementById("logout").style.display = "block";
+                }
+                else {
                     document.getElementById("allReviewNavItems").style.display = "block";
                     document.getElementById("logout").style.display = "block";
                 }
