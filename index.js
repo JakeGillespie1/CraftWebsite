@@ -113,27 +113,22 @@ app.post('/addReview', (req, res) => {
         });
 });
 
-//Copied over from INDEX, need to create user table in database to adjust changes
+
 app.post('/userLogin', (req, res) => {
     //query that searches the database for a matching record,
     knex('user')
-        .where('password', req.body.pword)
+        .where('password', req.body.userpassword)
         .andWhere('email', req.body.useremail)
-        .select('password', 'email', 'first_name', 'last_name', 'is_admin')
+        .select('password', 'email')
         .then((results) => {
             if (results.length == 0) {
                 //user credentials invalid
                 res.status(401).json({ message: 'Invalid Credentials' });
             } else {
-                let sFirstName = results[0].first_name;
-                let sLastName = results[0].last_name;
-                let isAdmin = results[0].is_admin;
-                //need to change location?
                 res.render(path.join(__dirname + '/views/index'), {
-                    first_name: sFirstName,
-                    last_name: sLastName,
-                    is_admin: isAdmin,
-                    login: 'true',
+                    reviewData: data,
+                    date: sDate,
+                    //login: 'true', Add later?
                 });
             }
         });
