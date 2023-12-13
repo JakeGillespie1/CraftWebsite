@@ -153,7 +153,7 @@ app.post('/addReview/:id', (req, res) => {
             rating: dbRating,
             product_id: dbProductName,
         })
-        .then(() => res.render(path.join(__dirname + '/views/redirect')));
+        .then(() => res.redirect('/'));
 });
 
 app.post('/userLogin', (req, res) => {
