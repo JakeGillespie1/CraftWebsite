@@ -108,9 +108,9 @@ app.post('/userLogin', (req, res) => {
         .then((results) => {
             if (results.length == 0) {
                 //user credentials invalid
-                res.render(path.join(__dirname + '/views/errorPage.ejs'));
+                res.render(path.join(__dirname + '/views/errorPage'));
             } else {
-                res.render(path.join(__dirname + '/views/index.ejs'), {
+                res.render(path.join(__dirname + '/views/index'), {
                     reviewData: results,
                     //login: 'true', Add later?
                 });
