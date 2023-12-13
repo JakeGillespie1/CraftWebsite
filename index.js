@@ -93,7 +93,6 @@ app.post('/addReview', (req, res) => {
                 .then((data) => {
                     res.render(path.join(__dirname + '/views/index'), {
                         reviewData: data,
-                        date: sDate,
                     });
                 });
         });
