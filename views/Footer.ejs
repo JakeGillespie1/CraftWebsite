@@ -14,6 +14,10 @@
             {
                 let sYear = new Date().getFullYear();
                 document.getElementById("copyright").innerHTML = "Copyright &copy; A Little Bit of Grandma " + sYear + "."
+
+                if (localStorage.getItem('logged_in').includes("true")) {
+                    document.getElementById("allReviewNavItems").style.display = "block";
+                }
             }
         </script>
     </body>
