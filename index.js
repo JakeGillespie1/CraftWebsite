@@ -41,7 +41,8 @@ app.get('/', (req, res) => {
         .from('product')
         .then((data) => {
             res.render(path.join(__dirname + '/views/index'), {
-                reviewData: data, date : sDate
+                reviewData: data,
+                date: sDate,
             });
         });
 });
@@ -58,7 +59,7 @@ app.get('/product/:id', (req, res) => {
             .where('product_id', '=', pID)
             .then((data) =>
                 res.render(path.join(__dirname + '/views/product'), {
-                    productData: data, 
+                    productData: data,
                 })
             );
     }
@@ -103,7 +104,14 @@ app.post('/addReview', (req, res) => {
             product_id: dbProductName,
         })
         .then(() => {
-            res.render(path.join(__dirname + '/views/index'));
+            knex.select()
+                .from('product')
+                .then((data) => {
+                    res.render(path.join(__dirname + '/views/index'), {
+                        reviewData: data,
+                        date: sDate,
+                    });
+                });
         });
 });
 
