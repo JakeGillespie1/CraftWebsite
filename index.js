@@ -57,7 +57,7 @@ app.get('/allReviews', (req, res) => {
 app.get('/edit/:reviewID', (req, res) => {
     knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
         .from('review')
-        .where('review_id',req.params.reviewID)
+        .where('review_id', req.params.reviewID)
         .then((data) => {
             res.render('/views/edit', { reviewData: data });
         })
@@ -67,22 +67,23 @@ app.get('/edit/:reviewID', (req, res) => {
         });
 });
 
-app.post('/editReview', (req,res) => {
+app.post('/editReview', (req, res) => {
     knex('review')
-    .where('review_id',parseInt(req.body.reviewID))
-    .update({
-        reviewer_name : req.body.reviewerName,
-        review_text : req.body.reviewText})
-    .then(reviewData => {
-        res.redirect('/views/allReviews')
-    })
-})
+        .where('review_id', parseInt(req.body.reviewID))
+        .update({
+            reviewer_name: req.body.reviewerName,
+            review_text: req.body.reviewText,
+        })
+        .then((reviewData) => {
+            res.redirect('/views/allReviews');
+        });
+});
 
 app.post('/delete/:reviewID', (req, res) => {
     knex('review')
         .where('review_id', req.params.reviewID)
         .del()
-        .then(reviewData => {
+        .then((reviewData) => {
             res.redirect('/allReviews');
         })
         .catch((err) => {
@@ -107,10 +108,23 @@ app.get('/product/:id', (req, res) => {
                     .from('review')
                     .where('product_id', '=', pID)
                     .then((reviews) =>
-                        res.render(path.join(__dirname + '/views/product'), {
-                            productData: data,
-                            productReviews: reviews,
-                        })
+                        knex
+                            .from('review')
+                            .where('product_id', '=', pID)
+                            .select(
+                                knex.raw('ROUND(AVG(rating), 1) as avg_rating')
+                            )
+                            .then((reviewsAvg) =>
+                                res.render(
+                                    path.join(__dirname + '/views/product'),
+                                    {
+                                        productData: data,
+                                        productReviews: reviews,
+                                        prodReviewsAvg:
+                                            reviewsAvg[0].avg_rating,
+                                    }
+                                )
+                            )
                     )
             );
     }
@@ -149,15 +163,15 @@ app.post('/userLogin', (req, res) => {
         .andWhere('email', req.body.useremail)
         .select()
         .then((results) => {
-            if (results.length == 0) 
-            {
+            if (results.length == 0) {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
-            } 
-            else 
-            {
-                res.render(path.join(__dirname + '/views/redirect'), {reviewData: results,})
-            }});
+            } else {
+                res.render(path.join(__dirname + '/views/redirect'), {
+                    reviewData: results,
+                });
+            }
         });
+});
 
 app.listen(port, () => console.log('I am listening'));
