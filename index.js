@@ -138,19 +138,15 @@ app.post('/userLogin', (req, res) => {
         .andWhere('email', req.body.useremail)
         .select('password', 'email')
         .then((results) => {
-            if (results.length == 0) {
+            if (results.length == 0) 
+            {
                 //user credentials invalid
                 res.render(path.join(__dirname + '/views/errorPage'));
-            } else {
-                knex.select()
-                    .from('product')
-                    .then((results) => {
-                        res.render(path.join(__dirname + '/views/redirect'), {
-                            reviewData: results,
-                        });
-                    });
-            }
+            } 
+            else 
+            {
+                res.render(path.join(__dirname + '/views/redirect')), {reviewData: results,}
+            }});
         });
-});
 
 app.listen(port, () => console.log('I am listening'));
