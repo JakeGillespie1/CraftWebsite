@@ -73,5 +73,11 @@
         <br />
         <br />
     </div>
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            // Add any additional logic here if needed
+        });
+    </script>
 </section>
 <%- include('Footer') %>
