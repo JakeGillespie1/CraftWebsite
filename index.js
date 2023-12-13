@@ -59,7 +59,7 @@ app.get('/edit/:reviewID', (req, res) => {
         .from('review')
         .where('review_id', req.params.reviewID)
         .then((data) => {
-            res.render('/views/edit', { reviewData: data });
+            res.render(path.join(__dirname + '/views/edit'), { reviewData: data });
         })
         .catch((err) => {
             console.log(err);
@@ -75,7 +75,7 @@ app.post('/editReview', (req, res) => {
             review_text: req.body.reviewText,
         })
         .then((reviewData) => {
-            res.redirect('/views/allReviews');
+            res.redirect(path.join(__dirname + '/views/allReviews'));
         });
 });
 
