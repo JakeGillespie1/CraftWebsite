@@ -72,7 +72,7 @@ app.get('/adminlogin', (req, res) => {
     res.render(path.join(__dirname + '/views/login'));
 });
 
-app.get('/leaveReview/:id', (req, res) => {
+app.get('/product/leaveReview/:id', (req, res) => {
     let pID = req.params.id;
     res.render(path.join(__dirname + '/views/leaveReview'), { prod_id: pID });
 });
