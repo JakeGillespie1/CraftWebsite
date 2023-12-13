@@ -54,18 +54,27 @@ app.get('/allReviews', (req, res) => {
         });
 });
 
-app.get('/edit', (req, res) => {
+app.get('/edit/:id', (req, res) => {
     knex.select('review_id', 'reviewer_name', 'review_text', 'product_id')
         .from('review')
-        .where('band_name', req.query.bandName.toUpperCase())
-        .then((bands) => {
-            res.render('editBand', { mybands: bands });
+        .where('review_id', req.query.id)
+        .then((review) => {
+            res.render('edit', { reviewData: review });
         })
         .catch((err) => {
             console.log(err);
             res.status(500).json({ err });
         });
 });
+
+app.post("/deleteBand/:id", (req, res) => {
+    knex("review").where("review_id", req.params.id).del().then(reviewData => {
+        res.redirect("/");
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({err});
+    })
+}); 
 
 app.get('/about', (req, res) => {
     res.render(path.join(__dirname + '/views/about'));
@@ -101,9 +110,9 @@ app.get('/product/leaveReview/:id', (req, res) => {
     res.render(path.join(__dirname + '/views/leaveReview'), { prod_id: pID });
 });
 
-app.post('/addReview', (req, res) => {
+app.post('/addReview/:id', (req, res) => {
     let dbName = req.body.sName;
-    let dbProductName = req.body.p_id;
+    let dbProductName = req.params.id;
     console.log('DBDBDB', dbProductName);
     let dbRating = parseInt(req.body.rate);
     let dbReview = req.body.sReview;

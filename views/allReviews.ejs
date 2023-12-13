@@ -24,8 +24,14 @@
                         <td><%=reviewData[iCount].product_id%></td>
                         <td>
                             <!-- You can add buttons or links for actions like editing or deleting the review -->
-                            <a href="edit/<%=reviewData[iCount].review_id%>" class="btn btn-primary">Edit</a>
-                            <a href="delete/<%=reviewData[iCount].review_id%>" class="btn btn-primary">Delete</a>
+                            <form action="/edit/<%= reviewData[iCount].review_id %>" method="GET">
+                                <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </form>
+                            <form action="/delete/<%= reviewData[iCount].review_id %>" method="POST">
+                                <input type="hidden" name="reviewID" value="<%=reviewData[iCount].review_id%>">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <% } %>
