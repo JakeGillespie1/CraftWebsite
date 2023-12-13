@@ -111,11 +111,10 @@ app.post('/userLogin', (req, res) => {
                 res.render(path.join(__dirname + '/views/errorPage'));
             } else {
                 let iLoggedIn = 1
-
                 knex.select()
                 .from('product')
                 .then((results) => {
-                res.render(path.join(__dirname + '/views/index'), {
+                res.render(path.join(__dirname + '/views/redirect'), {
                     reviewData: results, logged_in : iLoggedIn,
                 });
                 });
