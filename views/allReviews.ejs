@@ -3,39 +3,33 @@
 <%- include('Header') %>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <div
-            class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        >
-        <% for (let iCount = 0; iCount < reviewData.length; iCount++){%>
-            <a style="text-decoration: none; color: black;" href="product/<%=reviewData[iCount].product_id%>">
-                <div class="col mb-5 box" id="myBox">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <img
-                            class="card-img-top"
-                            src="<%=reviewData[iCount].img_path%>"
-                            alt="..."
-                        />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder"><%=reviewData[iCount].product_name%></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        <%}%>
-                    <!-- Product actions-->
-                    <div
-                        class="card-footer p-4 pt-0 border-top-0 bg-transparent"
-                    >
-                        <div class="text-center"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Review ID</th>
+                    <th>Reviewer Name</th>
+                    <th>Review Text</th>
+                    <th>Rating</th>
+                    <th>Product ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let iCount = 0; iCount < reviewData.length; iCount++) { %>
+                    <tr>
+                        <td><%=reviewData[iCount].review_id%></td>
+                        <td><%=reviewData[iCount].reviewer_name%></td>
+                        <td><%=reviewData[iCount].review_text%></td>
+                        <td><%=reviewData[iCount].rating%></td>
+                        <td><%=reviewData[iCount].product_id%></td>
+                        <td>
+                            <!-- You can add buttons or links for actions like editing or deleting the review -->
+                            <a href="edit-review/<%=reviewData[iCount].review_id%>" class="btn btn-primary">Edit</a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
     </div>
 </section>
 <%- include('Footer') %>
