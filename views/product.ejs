@@ -28,13 +28,16 @@
         </div>
     </div>
     <div class="container-custom">
-        <p><%= prodReviewsAvg %></p>
-        <% for (let iCount = 0; iCount < productReviews.length; iCount++){%>
-        <div class="col mb-5">
-            <p><%= productReviews[iCount].reviewer_name %></p>
-            <p><%= productReviews[iCount].review_text %></p>
-        </div>
-        <%}%>
+        <h2><%= prodReviewsAvg %></h2>
+        <ul>
+            <% for (let iCount = 0; iCount < productReviews.length; iCount++){%>
+            <li class="col mb-5">
+                <p>Reviewer: <%= productReviews[iCount].reviewer_name %></p>
+                <p>Rating: <%= productReviews[iCount].rating %></p>
+                <p><%= productReviews[iCount].review_text %></p>
+            </li>
+            <%}%>
+        </ul>
     </div>
 </body>
 <%- include('Footer') %>
