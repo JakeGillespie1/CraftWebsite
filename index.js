@@ -39,7 +39,6 @@ app.get('/', (req, res) => {
     knex.select()
         .from('product')
         .then((data) => {
-            data.year = new Date().getFullYear();
             res.render(path.join(__dirname + '/views/index'), {
                 reviewData: data,
             });
