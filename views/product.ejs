@@ -28,12 +28,14 @@
         </div>
     </div>
     <div class="container-custom">
-        <h2>Average: <%= prodReviewsAvg %> ★</h2>
-        <br />
-        <br />
-        <h1><b>Reviews</b></h1>
-        <br />
         <ul style="list-style-type: none">
+            <li>
+                <h2>Average: <%= prodReviewsAvg %> ★</h2>
+                <br />
+            </li>
+            <li>
+                <h1><b>Reviews</b></h1>
+            </li>
             <% for (let iCount = 0; iCount < productReviews.length; iCount++){%>
             <li class="col mb-5">
                 <h2>Reviewer: <%= productReviews[iCount].reviewer_name %></h2>
